@@ -45,7 +45,8 @@ public enum TwitterURL {
     case userStream
     case siteStream
     case oauth
-    
+    case media
+    case video
     var url: URL {
         switch self {
         case .api:          return URL(string: "https://api.twitter.com/1.1/")!
@@ -54,10 +55,11 @@ public enum TwitterURL {
         case .userStream:   return URL(string: "https://userstream.twitter.com/1.1/")!
         case .siteStream:   return URL(string: "https://sitestream.twitter.com/1.1/")!
         case .oauth:        return URL(string: "https://api.twitter.com/")!
-        case .publish:		return URL(string: "https://publish.twitter.com/")!
+        case .publish:      return URL(string: "https://publish.twitter.com/")!
+        case .media:        return URL(string: "https://ton.twitter.com/")!
+        case .video:        return URL(string: "https://video.twimg.com")!
         }
     }
-    
 }
 
 // MARK: - Tweet Mode

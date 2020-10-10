@@ -57,18 +57,18 @@ extension String {
 
         let scanner = Scanner(string: self)
 
-        var key: String?
-        var value: String?
+        var key: NSString?
+        var value: NSString?
 
         while !scanner.isAtEnd {
-            key = scanner.scanUpToString("=")
-            _ = scanner.scanString(string: "=")
+            scanner.scanUpToCharacters(from: CharacterSet(charactersIn: "="), into: &key)
+            _ = scanner.scanString("=", into: nil)
 
-            value = scanner.scanUpToString("&")
-            _ = scanner.scanString(string: "&")
+            scanner.scanUpToCharacters(from: CharacterSet(charactersIn: "&"), into: &value)
+            _ = scanner.scanString("&", into: nil)
 
             if let key = key, let value = value {
-                parameters.updateValue(value, forKey: key)
+                parameters.updateValue(value as String, forKey: key as String)
             }
         }
         

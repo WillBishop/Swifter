@@ -109,4 +109,12 @@ public extension Swifter {
         }, failure: failure)
     }
     
+    func downloadImage(from url: URL,
+                       success: HTTPRequest.SuccessHandler? = nil,
+                       failure: HTTPRequest.FailureHandler? = nil){
+        self.client.get(url.path, baseURL: .media, parameters: [:], uploadProgress: nil, downloadProgress: nil, success: success, failure: {error in
+            
+        })
+    }
+    
 }
